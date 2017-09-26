@@ -17,13 +17,18 @@ namespace ConsoleApp1
 
         public static String ZigZagWriting(String s, int rows)
         {
-            var columns = (s.Length - 1 )/ (rows -1);
-            var rem = (s.Length - 1) % (rows-1);
+			if (string.IsNullOrEmpty(s) || rows == 1)
+            {
+                return s;
+            }
+
+            var columns = (s.Length)/ (rows -1);
+            var rem = (s.Length) % (rows-1);
             if (rem > 0)
             {
                 columns++;
             }
-
+			
             var matrix = new char[rows, columns];
 
             var currentRow = 0;
