@@ -11,7 +11,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-           var result = StringToInt("    -12387dsdf   ");
+            var result = StringToInt("    -12387dsdf   ");
         }
 
 
@@ -20,10 +20,9 @@ namespace ConsoleApp1
             bool negativeNumber = false;
 
             var currentNumber = 0;
-            for (int i = 0; i < numberString.Length; i++)
+            foreach (var ch in numberString)
             {
-                string ch = numberString[i].ToString();
-                if (string.IsNullOrWhiteSpace(ch))
+                if (char.IsWhiteSpace(ch))
                 {
                     continue;
                 }
@@ -32,37 +31,37 @@ namespace ConsoleApp1
 
                 switch (ch)
                 {
-                    case ("-"):
+                    case ('-'):
                         negativeNumber = true;
                         break;
-                    case ("0"):
+                    case ('0'):
                         digit = 0;
                         break;
-                    case ("1"):
+                    case ('1'):
                         digit = 1;
                         break;
-                    case ("2"):
+                    case ('2'):
                         digit = 2;
                         break;
-                    case ("3"):
+                    case ('3'):
                         digit = 3;
                         break;
-                    case ("4"):
+                    case ('4'):
                         digit = 4;
                         break;
-                    case ("5"):
+                    case ('5'):
                         digit = 5;
                         break;
-                    case ("6"):
+                    case ('6'):
                         digit = 6;
                         break;
-                    case ("7"):
+                    case ('7'):
                         digit = 7;
                         break;
-                    case ("8"):
+                    case ('8'):
                         digit = 8;
                         break;
-                    case ("9"):
+                    case ('9'):
                         digit = 9;
                         break;
                     default:

@@ -14,7 +14,8 @@ namespace ConsoleApp2
 
         static void QuickSort(int[] a, int low, int high)
         {
-            if (low >= high || ((high - low) <= 1 && a[low] <= a[high]))
+            //if (low >= high || ((high - low) <= 1 && a[low] <= a[high]))
+            if (low >= high)
             {
                 return;
             }
