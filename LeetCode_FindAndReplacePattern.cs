@@ -16,8 +16,59 @@ namespace ConsoleApp3
             var test = new Solution().ReturnPatternMatch(new string[] { "abc", "deq", "mee", "aqq", "dkd", "ccc" }, "ttt");
         }
     }
-    class Solution
+
+	class Solution
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns>Returns the count of fruits in the basket</returns>
+        public string[] ReturnPatternMatch(string[] a, string pattern)
+        {
+            var result = new List<string>();
+            foreach(var input in a)
+            {
+                if (IsMatch(input, pattern))
+                {
+                    result.Add(input);
+                }
+            }
+            return result.ToArray();
+        }
+
+        private bool IsMatch(string word, string pattern)
+        {
+            if (word.Length != pattern.Length)
+            {
+                return false;
+            }
+
+            var length = pattern.Length;
+            var mapping_PatternToInput = new Dictionary<char, char>();
+            var mapping_InputTpPattern = new Dictionary<char, char>();
+
+            for (int i = 0; i < length; i++)
+            {
+                if (!mapping_PatternToInput.ContainsKey(pattern[i]))
+                {
+                    mapping_PatternToInput.Add(pattern[i], word[i]);
+                }
+
+                if (!mapping_InputTpPattern.ContainsKey(word[i]))
+                {
+                    mapping_InputTpPattern.Add(word[i], pattern[i]);
+                }
+
+                if (mapping_PatternToInput[pattern[i]] != word[i] || mapping_InputTpPattern[word[i]] != pattern[i])
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    }
         /// <summary>
         /// 
         /// </summary>
