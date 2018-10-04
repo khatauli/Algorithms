@@ -13,7 +13,7 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
-            var test = new Solution().LongestIncreasingSubsequence(new int[] { 3, 6, 12, 11 });
+            var test = new Solution().LongestIncreasingSubsequence(new int[] { 3, 6, 12, 11, 13 , 55, 65, 12 });
         }
     }
 
@@ -33,19 +33,17 @@ namespace ConsoleApp3
                 return T[endIndex];
             }
 
-            int max = 0;
-            for (int i = 0; i < endIndex; i++)
+            int max = 1;
+            for (int j = 1; j < endIndex; j++)
             {
-                if (ar[endIndex] > ar[i])
+                if (ar[endIndex] > ar[j])
                 {
-                    int T_j = Calculate(ar, i, T);
+                    int T_j = Calculate(ar, j, T);
                     max = Math.Max(max, T_j);
                 }
             }
-            T[endIndex] = max + 1;
+            T[endIndex] = Math.Max(max + 1, Calculate(ar, endIndex - 1, T));
             return T[endIndex];
         }
     }
 }
-
-
